@@ -1,4 +1,4 @@
-import { Router } from "https://deno.land/x/oak/mod.ts";
+import { Router } from "https://deno.land/x/oak@v11.1.0/mod.ts";
 import { getAllBook } from "../controllers/book.ts";
 import { books } from "../data.ts";
 const bookRoutes = new Router()
@@ -24,5 +24,6 @@ const bookRoutes = new Router()
     }
   })
   .routes();
+
 const bookRouter = { path: "/books", routes: bookRoutes };
 export default bookRouter;

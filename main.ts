@@ -1,6 +1,9 @@
-import { Application } from "https://deno.land/x/oak/mod.ts";
-import router from "./routes/index.ts";
+import { Application, Router } from "https://deno.land/x/oak@v11.1.0/mod.ts";
+import bookRouter from "./routes/book.ts";
+import indexRouter from "./routes/index.ts";
+import userRouter from "./routes/user.ts";
 
+const router = new Router();
 const app = new Application();
 app.addEventListener("listen", ({ hostname, port, secure }) => {
   console.log(
@@ -24,6 +27,11 @@ app.use(async (ctx, next) => {
   const ms = Date.now() - start;
   ctx.response.headers.set("X-Response-Time", `${ms}ms`);
 });
+
+// routes
+router.all(indexRouter.path, indexRouter.routes);
+router.all(userRouter.path, userRouter.routes);
+router.all(bookRouter.path, bookRouter.routes);
 
 app.use(router.routes());
 app.use(router.allowedMethods());
