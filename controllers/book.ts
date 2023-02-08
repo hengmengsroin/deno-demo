@@ -1,5 +1,3 @@
-import { books } from "../data.ts";
-
 function getAllBook() {
   return [
     {
