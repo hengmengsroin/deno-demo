@@ -1,5 +1,5 @@
 import { Application } from "https://deno.land/x/oak/mod.ts";
-import { router } from "./routes.ts";
+import router from "./routes/index.ts";
 
 const app = new Application();
 app.addEventListener("listen", ({ hostname, port, secure }) => {
