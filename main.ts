@@ -1,7 +1,18 @@
 import { Application, Router } from "https://deno.land/x/oak@v11.1.0/mod.ts";
+import mongoose from "npm:mongoose@^6.9";
+import Dinosaur from "./models/Dinosaur.ts";
 import bookRouter from "./routes/book.ts";
 import indexRouter from "./routes/index.ts";
 import userRouter from "./routes/user.ts";
+const MONGO_URL = Deno.env.get("MONGO_URL");
+if (MONGO_URL) {
+  mongoose
+    .connect(MONGO_URL)
+    .then(() => console.log("MongoDB connected"))
+    .catch((err) => console.log(err));
+} else {
+  console.log("NO MONGO URL TO CONNECT", MONGO_URL);
+}
 
 const router = new Router();
 const app = new Application();
