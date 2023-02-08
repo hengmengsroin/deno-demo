@@ -1,27 +1,21 @@
 import { Router } from "https://deno.land/x/oak@v11.1.0/mod.ts";
 import { getAllBook } from "../controllers/book.ts";
-import { books } from "../data.ts";
+
 const bookRoutes = new Router()
   .get("/", async (context) => {
     context.response.body = await getAllBook();
   })
   .post("/", (context) => {
-    context.response.body = Array.from(books.values());
+    context.response.body = "Hello world!";
   })
   .get("/:id", (context) => {
-    if (books.has(context?.params?.id)) {
-      context.response.body = books.get(context.params.id);
-    }
+    context.response.body = "Hello world!";
   })
   .patch("/:id", (context) => {
-    if (books.has(context?.params?.id)) {
-      context.response.body = books.get(context.params.id);
-    }
+    context.response.body = "Hello world!";
   })
   .delete("/:id", (context) => {
-    if (books.has(context?.params?.id)) {
-      context.response.body = books.get(context.params.id);
-    }
+    context.response.body = "Hello world!";
   })
   .routes();
 
