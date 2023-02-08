@@ -1,5 +1,5 @@
 import { Application, Router } from "https://deno.land/x/oak@v11.1.0/mod.ts";
-import mongoose from "npm:mongoose@^6.9";
+import mongoose from "npm:mongoose@^6.7";
 import Dinosaur from "./models/Dinosaur.ts";
 import bookRouter from "./routes/book.ts";
 import indexRouter from "./routes/index.ts";
