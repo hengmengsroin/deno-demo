@@ -3,6 +3,9 @@ import bookRouter from "./books.ts";
 import userRouter from "./users.ts";
 
 const router = new Router();
+router.all("/", (context) => {
+  context.response.body = { message: "hello from deno" };
+});
 router.all(userRouter.path, userRouter.routes);
 router.all(bookRouter.path, bookRouter.routes);
 export default router;
