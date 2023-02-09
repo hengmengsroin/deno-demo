@@ -23,5 +23,5 @@ dinosaurSchema.methods = {
   },
 };
 
-// Export model.
-export default model("Dinosaur", dinosaurSchema);
+const DinosaurModel = model("Dinosaur", dinosaurSchema);
+export default DinosaurModel;
