@@ -1,5 +1,4 @@
-import { model, Schema } from "npm:mongoose@^6.7";
-
+import { model, Schema } from "mongoose";
 // Define schema.
 const dinosaurSchema = new Schema({
   name: { type: String, unique: true },

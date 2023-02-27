@@ -1,5 +1,5 @@
 import { Application, Router } from "https://deno.land/x/oak@v11.1.0/mod.ts";
-import mongoose from "npm:mongoose";
+import mongoose from "mongoose";
 import { config } from "https://deno.land/x/dotenv@v3.2.0/mod.ts";
 await config({ export: true });
 import bookRouter from "./routes/book.ts";
