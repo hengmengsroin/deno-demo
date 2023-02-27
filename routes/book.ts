@@ -1,12 +1,19 @@
 import { Router } from "https://deno.land/x/oak@v11.1.0/mod.ts";
-import { getAllBook } from "../controllers/book.ts";
+import { createBook, getAllBook } from "../controllers/book.ts";
 
 const bookRoutes = new Router()
   .get("/", async (context) => {
     context.response.body = await getAllBook();
   })
-  .post("/", (context) => {
-    context.response.body = "Hello world!";
+  .post("/", async ({ request, response }) => {
+    try {
+      let body = await request.body().value;
+      let result = await createBook(body);
+      response.body = result;
+    } catch (error) {
+      response.status = 400;
+      response.body = error;
+    }
   })
   .get("/:id", (context) => {
     context.response.body = "Hello world!";
