@@ -1,0 +1,14 @@
+{
+  "name": "@deno/deno-demo",
+  "description": "An example app created with Deno",
+  "type": "module",
+  "scripts": {
+    "say-hello": "cowsay 'Hello from deno!'"
+  },
+  "dependencies": {
+    "mongoose": "^6.7.0"
+  },
+  "devDependencies": {
+    "cowsay": "^1.5"
+  }
+}

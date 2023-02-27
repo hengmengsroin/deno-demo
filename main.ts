@@ -1,15 +1,22 @@
 import { Application, Router } from "https://deno.land/x/oak@v11.1.0/mod.ts";
-// import mongoose from "npm:mongoose@^6.7";
-// import Dinosaur from "./models/Dinosaur.ts";
+import mongoose from "mongoose";
+import { config } from "https://deno.land/x/dotenv@v3.2.0/mod.ts";
+await config({ export: true });
 import bookRouter from "./routes/book.ts";
 import indexRouter from "./routes/index.ts";
 import userRouter from "./routes/user.ts";
 const MONGO_URL = Deno.env.get("MONGO_URL");
 if (MONGO_URL) {
-  // mongoose
-  //   .connect(MONGO_URL)
-  //   .then(() => console.log("MongoDB connected"))
-  //   .catch((err) => console.log(err));
+  console.log("Connecting db ...");
+  const option: any = {
+    dbName: "test",
+  };
+  await mongoose.connect(MONGO_URL, option, (err) => {
+    if (err) {
+      console.log(err);
+    }
+  });
+  console.log("Connected db successfully.");
 } else {
   console.log("NO MONGO URL TO CONNECT", MONGO_URL);
 }

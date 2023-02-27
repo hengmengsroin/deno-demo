@@ -1,3 +1,5 @@
+import DinosaurModel from "../models/Dinosaur.ts";
+
 function getAllBook() {
   return [
     {
@@ -7,4 +9,18 @@ function getAllBook() {
     },
   ];
 }
-export { getAllBook };
+async function createBook({
+  name,
+  description,
+}: {
+  name: string;
+  description: string;
+}) {
+  const result = await DinosaurModel.create({
+    name,
+    description,
+  });
+
+  return result;
+}
+export { getAllBook, createBook };
